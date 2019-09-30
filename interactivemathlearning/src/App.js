@@ -11,10 +11,15 @@ class App extends Component{
           <div className="NumberPanel">
           <span className="task-header">Number Panel</span>
           </div>
+           <div className="SandBoxPanel">
+         <span className="task-header">SandBox Panel</span>
+        </div>
           <div className="ResultPanel">
           <span className="task-header">Result Panel</span> 
           </div>
           </div>
+
+
           </div>
 );           
     }
