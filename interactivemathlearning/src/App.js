@@ -17,6 +17,31 @@ class App extends Component{
 	            {name:"0", category:"NumberPanel", bgcolor:"SkyBlue"}
 	          ]
 	    }
+	onDragStart = (ev, name) => {
+		console.log('dragstart:',name);
+		ev.dataTransfer.setData("name", name);
+	}
+
+	onDragOver = (ev) => {
+		ev.preventDefault();
+	}
+
+	onDrop = (ev, cat) => {
+		let id = ev.dataTransfer.getData("name");
+
+		let tasks = this.state.tasks.filter((task) => {
+			if (task.name === id) {
+				task.category = cat;
+			}
+			return task;
+		});
+
+		this.setState({
+			...this.state,
+			tasks
+		});
+	}
+
 	render() {
 		var tasks = {
 		           NumberPanel: [],
@@ -26,6 +51,7 @@ class App extends Component{
 		       this.state.tasks.forEach ((t) => {
 		           tasks[t.category].push(
 		               <div key={t.name}
+							onDragStart = {(e) => this.onDragStart(e, t.name)}
 		                   draggable
 		                   className="draggable"
 		                   style = {{backgroundColor: t.bgcolor,width:"25px",textAlign:"center",padding:"10px",margin:"5px",borderRadius:"6px"}}
@@ -38,12 +64,17 @@ class App extends Component{
       <div>
           <div className="row">
           <h1>Interactive Math Learning</h1>
-          <div className="NumberPanel">
-          <span className="task-header">Number Panel</span>
+          <div className="NumberPanel"
+			onDragOver={(e)=>this.onDragOver(e)}
+			onDrop={(e)=>{this.onDrop(e, "NumberPanel")}}>
+			<span className="task-header">Number Panel</span>
           {tasks.NumberPanel}
           </div>
-           <div className="SandBoxPanel">
-         <span className="task-header">SandBox Panel</span>
+           <div className="SandBoxPanel"
+			onDragOver={(e)=>this.onDragOver(e)}
+			onDrop={(e)=>this.onDrop(e, "SandBoxPanel")}>
+			<span className="task-header">SandBox Panel</span>
+			{tasks.SandBoxPanel}
         </div>
           <div className="ResultPanel">
           <span className="task-header">Result Panel</span> 
