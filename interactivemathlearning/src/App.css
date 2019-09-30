@@ -4,6 +4,14 @@
     min-height: 500px;
 }
 
+.NumberPanel {
+    background-color: lightgoldenrodyellow;
+    width: 25%;
+    height :800px;
+    float: left;
+    border-style:ridge;
+ }
+
 .ResultPanel {
     background-color: lightgoldenrodyellow;
     width: 25%;
