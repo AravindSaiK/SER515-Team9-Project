@@ -1,5 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 
-ReactDOM.render(<App />,document.getElementById('root'));
+
+import Main from './Main';
+import FirstGrade from './FirstGrade.js';
+import ThirdGrade from './ThirdGrade.js';
+
+ReactDOM.render(
+	<Main />,
+	document.getElementById('root'));
+
