@@ -1,34 +1,32 @@
 import React, {Component} from 'react'
 
-// class ThirdGrade extends Component{
-// 	render(){
-// 		return(
-// 			<div>
-// 				<h1>Third Grade</h1>
-// 			</div>
 
-// 		)
-// 	}
-// }
-
-// export default ThirdGrade;
-// import React , { Component } from 'react';
 import "./App.css"
+import NumberPanel from "./NumberPanel";
+import SandBoxPanel from "./SandBoxPanel";
+import ResultPanel from "./ResultPanel";
+import { DndProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
+
 
 
 class ThirdGradeApp extends Component{
 	state = {
 	        tasks: [
-	            {name:"1",category:"NumberPanel", bgcolor: "SkyBlue"},
-	            {name:"2", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"3", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"4",category:"NumberPanel", bgcolor: "SkyBlue"},
-	            {name:"5", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"6", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"7",category:"NumberPanel", bgcolor: "SkyBlue"},
-	            {name:"8", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"9", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"0", category:"NumberPanel", bgcolor:"SkyBlue"}
+	            {name:"1",category:"NumberPanel"},
+	            {name:"2", category:"NumberPanel"},
+	            {name:"3", category:"NumberPanel"},
+	            {name:"4",category:"NumberPanel"},
+	            {name:"5", category:"NumberPanel"},
+	            {name:"6", category:"NumberPanel"},
+	            {name:"7",category:"NumberPanel"},
+	            {name:"8", category:"NumberPanel"},
+	            {name:"9", category:"NumberPanel"},
+	            {name:"0", category:"NumberPanel"},
+				{name:"+", category:"NumberPanel"},
+				{name:"-", category:"NumberPanel"},
+				{name:"*", category:"NumberPanel"}
+
 	          ]
 	    }
 	onDragStart = (ev, name) => {
@@ -76,26 +74,20 @@ class ThirdGradeApp extends Component{
 		       });
 		return (
       <div>
-          <div className="row">
+		  <DndProvider backend={HTML5Backend}>
+
+		  <div className="row">
           <h1>Interactive Math Learning</h1>
-          <div className="NumberPanel"
-			onDragOver={(e)=>this.onDragOver(e)}
-			onDrop={(e)=>{this.onDrop(e, "NumberPanel")}}>
-			<span className="task-header">Number Panel</span>
-          {tasks.NumberPanel}
-          </div>
-           <div className="SandBoxPanel"
-			onDragOver={(e)=>this.onDragOver(e)}
-			onDrop={(e)=>this.onDrop(e, "SandBoxPanel")}>
-			<span className="task-header">SandBox Panel</span>
-			{tasks.SandBoxPanel}
-        </div>
-          <div className="ResultPanel">
-          <span className="task-header">Result Panel</span> 
-          </div>
-          </div>
+			  <NumberPanel numberValue={tasks.NumberPanel}/>
+
+			  <SandBoxPanel sandboxValue={tasks.SandBoxPanel}/>
+
+			  <ResultPanel />
 
 
+          </div>
+
+		  </DndProvider>
           </div>
 );           
     }
