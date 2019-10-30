@@ -12,14 +12,27 @@ const style = {
     cursor: 'move',
     float: 'left',
 }
-class Items extends Component {
-    render() {
+const Items = ({ num }) => {
+    const [{ isDragging }, drag] = useDrag({
+        item: { num, type: ItemTypes.BOX },
+        end: (item, monitor) => {
+            const dropResult = monitor.getDropResult()
+            if (item && dropResult) {
+                alert(`You dropped ${item.num} into ${dropResult.name}!`)
+                console.log({dropResult})
+            }
+        },
+        collect: monitor => ({
+            isDragging: monitor.isDragging(),
+        }),
+    })
+    const opacity = isDragging ? 0.4 : 1
     return (
-        <div style={style}>
-            {this.props.num}
+        <div ref={drag} style={{ ...style, opacity }}>
+            {num}
         </div>)
 }
-}
+
 
 
 export default Items;

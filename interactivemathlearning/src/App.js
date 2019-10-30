@@ -4,24 +4,29 @@ import "./App.css"
 
 class App extends Component{
 	state = {
-	        tasks: [
-	            {name:"1",category:"NumberPanel", bgcolor: "SkyBlue"},
-	            {name:"2", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"3", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"4",category:"NumberPanel", bgcolor: "SkyBlue"},
-	            {name:"5", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"6", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"7",category:"NumberPanel", bgcolor: "SkyBlue"},
-	            {name:"8", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"9", category:"NumberPanel", bgcolor:"SkyBlue"},
-	            {name:"0", category:"NumberPanel", bgcolor:"SkyBlue"}
-	          ]
-	    }
+		tasks: [
+			{name:"1",category:"NumberPanel"},
+			{name:"2", category:"NumberPanel"},
+			{name:"3", category:"NumberPanel"},
+			{name:"4",category:"NumberPanel"},
+			{name:"5", category:"NumberPanel"},
+			{name:"6", category:"NumberPanel"},
+			{name:"7",category:"NumberPanel"},
+			{name:"8", category:"NumberPanel"},
+			{name:"9", category:"NumberPanel"},
+			{name:"0", category:"NumberPanel"},
+			{name:"+", category:"NumberPanel"},
+			{name:"-", category:"NumberPanel"},
+			{name:"*", category:"NumberPanel"}
+
+		]
+	}
 	onDragStart = (ev, name) => {
 		console.log('dragstart:',name);
 		ev.dataTransfer.setData("name", name);
 	}
 
+/*
 	onDragOver = (ev) => {
 		ev.preventDefault();
 	}
@@ -41,50 +46,45 @@ class App extends Component{
 			tasks
 		});
 	}
+*/
 
 	render() {
 		var tasks = {
-		           NumberPanel: [],
-		           SandBoxPanel: [],
-		           ResultPanel: []
-		       }
-		       this.state.tasks.forEach ((t) => {
-		           tasks[t.category].push(
-		               <div key={t.name}
-							onDragStart = {(e) => this.onDragStart(e, t.name)}
-		                   draggable
-		                   className="draggable"
-		                   style = {{backgroundColor: t.bgcolor,width:"25px",textAlign:"center",padding:"10px",margin:"5px",borderRadius:"6px"}}
-		               >
-		                   {t.name}
-		               </div>
-		           );
-		       });
+			NumberPanel: [],
+			SandBoxPanel: [],
+			ResultPanel: []
+		}
+		this.state.tasks.forEach ((t) => {
+			tasks[t.category].push(
+				<div key={t.name}
+					 onDragStart = {(e) => this.onDragStart(e, t.name)}
+					 draggable
+					 className="draggable"
+					 style = {{backgroundColor: t.bgcolor,width:"25px",textAlign:"center",padding:"10px",margin:"5px",borderRadius:"6px"}}
+				>
+					{t.name}
+				</div>
+			);
+		});
 		return (
-      <div>
-          <div className="row">
-          <h1>Interactive Math Learning</h1>
-          <div className="NumberPanel"
-			onDragOver={(e)=>this.onDragOver(e)}
-			onDrop={(e)=>{this.onDrop(e, "NumberPanel")}}>
-			<span className="task-header">Number Panel</span>
-          {tasks.NumberPanel}
-          </div>
-           <div className="SandBoxPanel"
-			onDragOver={(e)=>this.onDragOver(e)}
-			onDrop={(e)=>this.onDrop(e, "SandBoxPanel")}>
-			<span className="task-header">SandBox Panel</span>
-			{tasks.SandBoxPanel}
-        </div>
-          <div className="ResultPanel">
-          <span className="task-header">Result Panel</span> 
-          </div>
-          </div>
+			<div>
+				<DndProvider backend={HTML5Backend}>
+
+					<div className="row">
+						<h1>Interactive Math Learning</h1>
+						<NumberPanel numberValue={tasks.NumberPanel}/>
+
+						<SandBoxPanel sandboxValue={tasks.SandBoxPanel}/>
+
+						<ResultPanel />
 
 
-          </div>
-);           
-    }
+					</div>
+
+				</DndProvider>
+			</div>
+		);
+	}
 
 }
 export default App;
