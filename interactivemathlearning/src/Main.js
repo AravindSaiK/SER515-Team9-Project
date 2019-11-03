@@ -1,53 +1,40 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router,
+import {BrowserRouter,
 		Switch,
 		Link,
 		Route} from "react-router-dom";
 import FirstGradeApp from './FirstGrade';
 import ThirdGradeApp from './ThirdGrade';
+import NavBar from './NavBar';
+import FirstGrade from './FirstGrade';
+import ThirdGrade from './ThirdGrade';
 
 class Main extends Component{
 	render(){
 		return(
-			<Router>
-				<div>
-					<ul>
-					<li>
-						<Link to="/">Home</Link>
-					</li>
-					<li>
-						<Link to="/First">First Grade</Link>
-					</li>
-					<li>
-						<Link to="/Third">Third Grade</Link>
-					</li>
-					</ul>
-					<hr />
-					<Switch>
-					<Route exact path="/">
-						<Home />
-					</Route>
-					<Route path="/First">
-						<FirstGradeApp />
-					</Route>
-					<Route path="/Third">
-						<ThirdGradeApp />
-					</Route>
-					</Switch>
+			<BrowserRouter>
+			<div className="Main">
+			<Switch>
+		<Route exact path='/Main' component={NavBar} />
+		<Route exact path='/FirstGrade' component={FirstGrade} />
+		<Route exact path='/ThirdGrade' component={ThirdGrade} />
 
-				</div>
-			</Router>
-		)
+
+		</Switch>
+		</div>
+		</BrowserRouter>
+		//<Login/>
+	)
 	}
-	
+
 }
 
 function Home(){
 	return (
 		<div>
-		  <h2>Home</h2>
+		<NavBar/>
 		</div>
-	  );
+);
 }
 
 export default Main;
