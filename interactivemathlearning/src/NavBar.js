@@ -31,11 +31,13 @@ export default function ButtonAppBar() {
         <Typography variant="h6" className={classes.title}>
         Interactive Math Learning
     </Typography>
-    <Button ><Link to="/FirstGrade" style={{color:"white",textDecoration:"none"}}>First Grade</Link></Button>
-    <Button><Link to="/ThirdGrade" style={{color:"white",textDecoration:"none"}} >Third Grade</Link></Button>
     <Button color="inherit">Logout</Button>
         </Toolbar>
         </AppBar>
+            <div align="center" style={{marginTop: "275px"}}>
+                <Button  variant="contained" color = "default" className={classes.buttonClass} ><Link to="/FirstGradeMenu">First Grade</Link></Button>
+                <Button variant="contained" color = "default"  className={classes.buttonClass} ><Link to="/ThirdGradeMenu" >Third Grade</Link></Button>
+            </div>
         </div>
 );
 }
