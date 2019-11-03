@@ -9,7 +9,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 
 
 
-class FirstGradeApp extends Component{
+class FirstGrade extends Component{
 	state = {
 	        tasks: [
 	            {name:"1",category:"NumberPanel"},
@@ -92,4 +92,4 @@ class FirstGradeApp extends Component{
     }
 
 }
-export default FirstGradeApp;
+export default FirstGrade;
