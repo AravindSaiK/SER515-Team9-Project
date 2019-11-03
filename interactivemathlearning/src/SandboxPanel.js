@@ -1,9 +1,9 @@
 import React from 'react';
-import {useDrop} from 'react-dnd'
+import { useDrop } from 'react-dnd'
 import ItemTypes from './ItemTypes'
 
 /**
- * @author Nikhila Saini
+ * @author Nikhila Saini, Krishna Gurram
  * Since Nov 3,2019
  */
 
@@ -15,9 +15,9 @@ const style = {
     borderStyle: "ridge"
 }
 const SandBoxPanel = () => {
-    const [{canDrop, isOver}, drop] = useDrop({
+    const [{ canDrop, isOver }, drop] = useDrop({
         accept: ItemTypes.BOX,
-        drop: () => ({name: 'SandBox'}),
+        drop: () => ({ name: 'SandBox' }),
         collect: monitor => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),

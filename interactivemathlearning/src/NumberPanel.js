@@ -1,12 +1,17 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import Items from "./Items";
+
+/**
+ *   @Author: Krishna Gurram
+ *   Since: November 3, 2019
+ */
 
 class NumberPanel extends Component {
 
 
-render() {
-    return (
-    <div>
+    render() {
+        return (
+            <div>
 
         <div className="NumberPanel" >
             <span className="task-header" >Number Panel</span>
@@ -19,8 +24,8 @@ render() {
             </div>
         </div>
     </div>
-    );
-}
+        );
+    }
 }
 
 export default NumberPanel;
