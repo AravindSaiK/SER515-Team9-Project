@@ -8,6 +8,11 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 
+/**
+ * @author Aravinda Sai Kondamari
+ * Since Nov 3,2019
+ */
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1

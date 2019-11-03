@@ -10,7 +10,7 @@ import ThirdGradeMenu from "./ThirdGradeMenu";
 import TakeQuizThirdGrade from "./TakeQuizThirdGrade";
 
 /**
- * @author Nikhila Saini ,Venkata Sairam, Tharun Chintham
+ * @author Nikhila Saini ,Venkata Sairam, Tharun Chintham, Aravinda Sai Kondamari
  * Since Nov 3,2019
  */
 
