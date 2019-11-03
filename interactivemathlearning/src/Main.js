@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import Login from "./Login";
 import FirstGradeMenu from './FirstGradeMenu';
 import ThirdGradeMenu from './ThirdGradeMenu';
+import TakeQuizThirdGrade from "./TakeQuizThirdGrade";
 
 /**
  * @author Nikhila Saini ,Venkata Sairam
@@ -26,6 +27,7 @@ class Main extends Component {
                         <Route exact path="/ThirdGrade" component={ThirdGrade}/>
 						<Route exact path='/PracticeFirstGrade' component={FirstGrade} />
 						<Route exact path='/PracticeThirdGrade' component={ThirdGrade} />
+                        <Route exact path='/TakeQuizThirdGrade' component={TakeQuizThirdGrade} />
                     </Switch>
                 </div>
             </BrowserRouter>
