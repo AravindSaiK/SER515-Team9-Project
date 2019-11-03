@@ -8,7 +8,25 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  },
+  buttonClass: {
+    margin: "40px",
+    color: "#fff",
+    textDecoration: "none"
+  }
+}));
+
 export default function TakeQuizFirstGrade() {
+  const classes = useStyles();
   return (
     <div className={classes.root}>
       <AppBar position="static">
