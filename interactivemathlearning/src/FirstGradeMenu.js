@@ -28,14 +28,13 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function ButtonAppBar() {
+export default function FirstGradeMenu() {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-
                     <Typography variant="h6" className={classes.title}>
                         Interactive Math Learning
                     </Typography>
@@ -43,10 +42,10 @@ export default function ButtonAppBar() {
                 </Toolbar>
             </AppBar>
             <div align="center" style={{marginTop: "275px"}}>
-                <Button variant="contained" color="default" className={classes.buttonClass}><Link to="/FirstGradeMenu">First
-                    Grade</Link></Button>
-                <Button variant="contained" color="default" className={classes.buttonClass}><Link to="/ThirdGradeMenu">Third
-                    Grade</Link></Button>
+                <Button variant="contained" color="default" className={classes.buttonClass}><Link
+                    to="/PracticeFirstGrade">Practice Quiz</Link></Button>
+                <Button variant="contained" color="default" className={classes.buttonClass}><Link
+                    to="/TakeQuizFirstGrade">Take Quiz</Link></Button>
             </div>
         </div>
     );
