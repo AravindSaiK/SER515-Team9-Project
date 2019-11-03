@@ -1,19 +1,23 @@
-import React , { Component } from 'react';
-// import Main from "./Main";
-import { useDrop } from 'react-dnd'
+import React from 'react';
+import {useDrop} from 'react-dnd'
 import ItemTypes from './ItemTypes'
+
+/**
+ * @author Nikhila Saini
+ * Since Nov 3,2019
+ */
 
 const style = {
     backgroundColor: "lightgoldenrodyellow",
     width: "48%",
-    height :"800px",
+    height: "800px",
     float: "left",
-    borderStyle:"ridge"
+    borderStyle: "ridge"
 }
 const SandBoxPanel = () => {
-    const [{ canDrop, isOver }, drop] = useDrop({
+    const [{canDrop, isOver}, drop] = useDrop({
         accept: ItemTypes.BOX,
-        drop: () => ({ name: 'SandBox' }),
+        drop: () => ({name: 'SandBox'}),
         collect: monitor => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
@@ -27,7 +31,7 @@ const SandBoxPanel = () => {
         backgroundColor = 'lightgoldenrodyellow'
     }
     return (
-        <div ref={drop} style={{ ...style, backgroundColor }}>
+        <div ref={drop} style={{...style, backgroundColor}}>
             {isActive ? 'Release to drop' : 'Drag a box here'}
         </div>)
 }

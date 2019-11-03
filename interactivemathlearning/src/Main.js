@@ -6,6 +6,10 @@ import NavBar from "./NavBar";
 import Login from "./Login";
 import FirstGradeMenu from './FirstGradeMenu';
 
+/**
+ * @author Nikhila Saini
+ * Since Nov 3,2019
+ */
 
 class Main extends Component {
     render() {

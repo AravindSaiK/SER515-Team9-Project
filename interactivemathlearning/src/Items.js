@@ -2,6 +2,11 @@ import React , { Component } from 'react';
 import { useDrag } from 'react-dnd'
 import ItemTypes from './ItemTypes'
 
+/**
+ * @author Nikhila Saini
+ * Since Nov 3,2019
+ */
+
 const style = {
     border: '1px dashed gray',
     backgroundColor: 'white',
