@@ -18,6 +18,11 @@ const useStyles = makeStyles(theme => ({
     title: {
         flexGrow: 1,
     },
+    buttonClass: {
+        margin: "40px",
+        color: "#fff",
+        textDecoration:"none"
+    }
 }));
 
 export default function ButtonAppBar() {
