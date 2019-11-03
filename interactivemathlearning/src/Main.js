@@ -24,6 +24,8 @@ class Main extends Component {
 						<Route exact path='/ThirdGradeMenu' component={ThirdGradeMenu}/>
                         <Route exact path="/FirstGrade" component={FirstGrade}/>
                         <Route exact path="/ThirdGrade" component={ThirdGrade}/>
+						<Route exact path='/PracticeFirstGrade' component={FirstGrade} />
+						<Route exact path='/PracticeThirdGrade' component={ThirdGrade} />
                     </Switch>
                 </div>
             </BrowserRouter>
