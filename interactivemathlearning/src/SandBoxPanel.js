@@ -3,7 +3,7 @@ import { useDrop } from 'react-dnd'
 import ItemTypes from './ItemTypes'
 
 /**
- * @author Nikhila Saini, Krishna Gurram
+ * @author Nikhila Saini, Krishna Gurram ,Venkata Sairam
  * Since Nov 3,2019
  */
 
