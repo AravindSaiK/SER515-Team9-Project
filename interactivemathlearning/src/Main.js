@@ -10,7 +10,7 @@ import ThirdGradeMenu from "./ThirdGradeMenu";
 import TakeQuizThirdGrade from "./TakeQuizThirdGrade";
 import QuestionsEasy from "./QuestionsEasy";
 /**
- * @author Nikhila Saini ,Venkata Sairam
+ * @author Nikhila Saini ,Venkata Sairam, Tharun Chintham, Aravinda Sai
  * Since Nov 3,2019
  */
 
@@ -44,12 +44,12 @@ class Main extends Component {
     }
 }
 
-function Home() {
-    return (
-        <div>
-            <NavBar />
-        </div>
-    );
-}
+// function Home() {
+//     return (
+//         <div>
+//             <NavBar />
+//         </div>
+//     );
+// }
 
 export default Main;

@@ -1,19 +1,12 @@
 import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Icon from "@material-ui/core/Icon";
-import DeleteIcon from "@material-ui/icons/Delete";
 import useStyles from "./Login.css";
 import { withStyles } from "@material-ui/core/styles";
 import withWidth from "@material-ui/core/withWidth";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { withRouter } from "react-router";
 
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
@@ -49,8 +42,8 @@ class Login extends Component {
     if (usernameRegex.test(username)) {
         if (passwordRegex.test(password)) {*/
 
-    if (username == "Hello") {
-      if (password == "123456") {
+    if (username === "Hello") {
+      if (password === "123456") {
         this.props.history.push("/Main", username);
       } else {
         alert("Invalid Password");
@@ -66,7 +59,7 @@ class Login extends Component {
 }*/
 
   render() {
-    const { classes } = style;
+    // const { classes } = style;
 
     return (
       <div>
