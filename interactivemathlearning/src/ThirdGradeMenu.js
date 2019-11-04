@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from "react-router-dom";
+import AppBarCustom from "./AppBarCustom";
 
 /**
  *   @Author: Krishna Gurram
@@ -34,15 +35,8 @@ export default function ThirdGradeMenu() {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-        <AppBar position="static">
-        <Toolbar>
-        <Typography variant="h6" className={classes.title}>
-        Interactive Math Learning
-    </Typography>
-    <Button color="inherit">Logout</Button>
-        </Toolbar>
-        </AppBar>
+       <div >
+        <AppBarCustom/>
 <div align="center" style={{marginTop: "275px"}}>
             <Button  variant="contained" color = "default" className={classes.buttonClass} ><Link to="/PracticeThirdGrade">Practice Quiz</Link></Button>
             <Button variant="contained" color = "default"  className={classes.buttonClass} ><Link to="/TakeQuizThirdGrade" >Take Quiz</Link></Button>
