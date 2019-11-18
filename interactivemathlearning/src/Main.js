@@ -9,6 +9,8 @@ import TakeQuizFirstGrade from "./TakeQuizFirstGrade";
 import ThirdGradeMenu from "./ThirdGradeMenu";
 import TakeQuizThirdGrade from "./TakeQuizThirdGrade";
 import QuestionsEasy from "./QuestionsEasy";
+import AdvancedFirst from "./AdvancedFirst.js";
+
 /**
  * @author Nikhila Saini ,Venkata Sairam, Tharun Chintham, Aravinda Sai
  * Since Nov 3,2019
@@ -33,7 +35,7 @@ class Main extends Component {
                         <Route exact path='/PracticeThirdGrade' component={ThirdGrade} />
                         <Route exact path='/EasyFirst' component={QuestionsEasy} />
                         <Route exact path='/MediumFirst' component={QuestionsEasy} />
-                        <Route exact path='/AdvancedFirst' component={QuestionsEasy} />
+                        <Route exact path='/AdvancedFirst' component={AdvancedFirst} />
                         <Route exact path='/EasyThird' component={QuestionsEasy} />
                         <Route exact path='/MediumThird' component={QuestionsEasy} />
                         <Route exact path='/AdvancedThird' component={QuestionsEasy} />
