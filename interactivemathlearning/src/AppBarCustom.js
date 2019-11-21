@@ -22,16 +22,18 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function AppBarCustom() {
+export default function AppBarCustom(gradeLevel) {
     const classes = useStyles();
-
+    console.log(gradeLevel)
+    const grade = gradeLevel.gradeLevel
     return (
         <div className={classes.root}>
         <AppBar position="static">
         <Toolbar>
         <Typography variant="h6" className={classes.title}>
-        Interactive Math Learning
+       Interactive Math Learning
     </Typography>
+    <Typography style={{marginLeft:"-175px"}}variant="h6" className={classes.title}> {grade} </Typography>
             <Button color="primary"><Link className={classes.buttonClass} to="/logout">Logout</Link></Button>
         </Toolbar>
         </AppBar>

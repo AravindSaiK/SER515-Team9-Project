@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useDrop } from 'react-dnd'
 import ItemTypes from './ItemTypes'
+import Item from './Items'
+import Items from './ItemsCustom'
+import { DropTarget } from 'react-dnd'
+import Button from "@material-ui/core/Button";
+
+
 
 /**
  * @author Nikhila Saini, Krishna Gurram ,Venkata Sairam
@@ -14,26 +20,109 @@ const style = {
     float: "left",
     borderStyle: "ridge"
 }
-const SandBoxPanel = () => {
-    const [{ canDrop, isOver }, drop] = useDrop({
+
+
+const buttonStyle = {
+   margin: "40px 10px"
+}
+const SandBoxPanel = (num) => {
+    const numbers = []
+    let add = false;
+    let exp = ""
+    let sum = 0;
+    const [items, addItems] = useState([]);
+    const initialItems = items
+    const [{ canDrop, isOver,item,dropped }, drop] = useDrop({
         accept: ItemTypes.BOX,
-        drop: () => ({ name: 'SandBox' }),
+        drop: (monitor,component) => ({ 
+            item: component.getItem(),
+            items: addItems(items.concat(item.num)),
+            name:  'SandBoxPanel'}),
+        
         collect: monitor => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
-        }),
+            item: monitor.getItem(),
+            dropped: monitor.didDrop(),
+            //items:  handleDrop(item.num)
+            }),
     })
     const isActive = canDrop && isOver
-    let backgroundColor = 'lightgoldenrodyellow'
-    if (isActive) {
-        backgroundColor = 'lightgoldenrodyellow'
-    } else if (canDrop) {
-        backgroundColor = 'lightgoldenrodyellow'
-    }
+    let backgroundColor = 'white'
+
+
+const display = (items) => {
     return (
-        <div ref={drop} style={{...style, backgroundColor}}>
-            {isActive ? 'Release to drop' : 'Drag a box here'}
-        </div>)
+        items.map((number,i ) => (
+                    <Items  num = {number} key={i}/>
+                ))
+        )
+
+}
+const undo = (items) => {
+    const tempItems = items
+    tempItems.splice(-1,1)
+    items = []
+    addItems(items.concat(tempItems))
+}
+const clear = (items) => {
+    items = []
+    addItems(items.concat(items))
+}
+
+const evaluate = (items) => {
+    var lastNum = ""
+    items.map((number) =>{
+                    exp = exp + number
+                    if(isNaN(number)){
+                        if(number == "+" || number == "-")
+                             exp = exp +"0"+number
+                         else if(number == "*" || number == "/")
+                            exp = exp +"1"+number
+
+                         
+                            }
+                            //console.log(exp)
+                })
+//console.log(exp)
+ try {
+        sum = eval(exp)
+        //console.log()
+    }catch (e){
+        if(e instanceof SyntaxError )
+    {   
+        sum = 0
+        return " ERROR: Improperly formed formula!"
+    }
+    }
+    //console.log(sum)
+    return sum
+
+}
+ 
+//console.log(item)
+    return (
+        <div>
+            <div ref={drop} style={{...style, backgroundColor}}>
+                {isActive ? items.length >= 1 ? display(items):<Items num={item.num} />: items.length > 0 ? display(items):<h3 align={"center"}>Drop Here</h3>  }
+
+                <div style={{marginTop:"500px", marginLeft:"280px"}}>
+                <Button style= {buttonStyle} variant="contained" color="primary" onClick={param => undo(items)}> Undo </Button>
+                <Button style= {buttonStyle} variant="contained" color="secondary" onClick={param => clear(items)}> Clear </Button>
+                </div>
+
+            </div>
+
+            <div>
+                <div  className="ResultPanel">
+                <div>
+                    <h3 align={"center"} className="task-header" >Result Panel</h3>
+                </div>
+                    {items.length > 0 ? <Items num={evaluate(items)} panel={"result"}/> : ""}
+                </div>
+            </div>
+        </div>
+)
 }
 
 

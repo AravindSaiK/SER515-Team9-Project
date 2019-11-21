@@ -51,7 +51,7 @@ export default function TakeQuizFirstGrade() {
           color="default"
           className={classes.buttonClass}
         >
-          <Link to="/AdvancedThird">Advanced</Link>
+          <Link to="/AdvancedFirst">Advanced</Link>
         </Button>
       </div>
     </div>

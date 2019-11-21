@@ -9,10 +9,13 @@ import TakeQuizFirstGrade from "./TakeQuizFirstGrade";
 import ThirdGradeMenu from "./ThirdGradeMenu";
 import TakeQuizThirdGrade from "./TakeQuizThirdGrade";
 import QuestionsEasy from "./QuestionsEasy";
-import AdvancedFirst from "./AdvancedFirst.js";
-import EasyThird from "./EasyThird.js";
 import EasyFirst from "./EasyFirst.js";
-
+import EasyThird from "./EasyThird.js";
+import MediumFirst from "./MediumFirst.js";
+import AdvancedFirst from "./AdvancedFirst.js";
+import AdvancedThird from "./AdvancedThird.js";
+import MediumThird from "./MediumThird.js";
+import AppBar from "./AppBarCustom.js"
 
 /**
  * @author Nikhila Saini ,Venkata Sairam, Tharun Chintham, Aravinda Sai
@@ -20,6 +23,11 @@ import EasyFirst from "./EasyFirst.js";
  */
 
 class Main extends Component {
+
+    constructor(props){
+        super(props);
+    }
+
     render() {
         return (
             <BrowserRouter>
@@ -37,16 +45,17 @@ class Main extends Component {
                         <Route exact path='/PracticeFirstGrade' component={FirstGrade} />
                         <Route exact path='/PracticeThirdGrade' component={ThirdGrade} />
                         <Route exact path='/EasyFirst' component={EasyFirst} />
-                        <Route exact path='/MediumFirst' component={QuestionsEasy} />
+                        <Route exact path='/MediumFirst' component={MediumFirst} />
                         <Route exact path='/AdvancedFirst' component={AdvancedFirst} />
                         <Route exact path='/EasyThird' component={EasyThird} />
-                        <Route exact path='/MediumThird' component={QuestionsEasy} />
-                        <Route exact path='/AdvancedThird' component={QuestionsEasy} />
+                        <Route exact path='/MediumThird' component={MediumThird} />
+                        <Route exact path='/AdvancedThird' component={AdvancedThird} />
                     </Switch>
                 </div>
             </BrowserRouter>
         );
     }
+
 }
 
 // function Home() {

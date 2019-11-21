@@ -7,7 +7,12 @@ import Button from "@material-ui/core/Button";
 import useStyles from "./Login.css";
 import { withStyles } from "@material-ui/core/styles";
 import withWidth from "@material-ui/core/withWidth";
-
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 /**
@@ -34,9 +39,12 @@ class Login extends Component {
     };
   }
 
+ 
+
   login() {
     var username = this.state.username;
     var password = this.state.password;
+    var grade = this.state.Grade
     /* var usernameRegex = /^[a-zA-Z1-9]{2,30}$/;
     var passwordRegex = /^[a-zA-Z1-9]{8,20}$/;
     if (usernameRegex.test(username)) {
@@ -44,9 +52,14 @@ class Login extends Component {
 
     if (username === "Hello") {
       if (password === "123456") {
-        this.props.history.push("/Main", username);
+        if(grade === "FirstGrade"){
+        this.props.history.push("/FirstGradeMenu", "First Grade Portal");
+      }
+      else{
+         this.props.history.push("/ThirdGradeMenu", "Third Grade Portal");
+      }
       } else {
-        alert("Invalid Password");
+        alert("Invalid Credentials");
         return;
       }
     }
@@ -60,6 +73,12 @@ class Login extends Component {
 
   render() {
     // const { classes } = style;
+     const handleChange = event => {
+   if(event.target.value == "FirstGrade")
+    alert("Congratulations")
+    else
+        alert("Sorry! You have selected a wrong answer")
+  };
 
     return (
       <div>
@@ -111,9 +130,17 @@ class Login extends Component {
                   }
                 />
               </div>
-            </div>
-          </form>
+          <div>
+          <RadioGroup row aria-label="grade" name="grade" style={{marginLeft:"20px"}}  
+          onChange={(event, newValue) =>
+                    this.setState({ Grade: event.target.value })}>
+          <FormControlLabel value="FirstGrade" control={<Radio />} label="First Grade" />
+          <FormControlLabel value="ThirdGrade" control={<Radio />} style={{marginLeft:"115px"}} label="Third Grade" />
+          </RadioGroup>
+          </div> 
+          </div>
 
+          </form>
           <div
             //className = {classes.container}
             style={style.container}

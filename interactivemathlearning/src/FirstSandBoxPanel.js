@@ -13,7 +13,7 @@ import { DropTarget } from 'react-dnd'
  */
 
 const style = {
-    backgroundColor: "lightgoldenrodyellow",
+    backgroundColor: "white",
     width: "48%",
     height: "800px",
     float: "left",
@@ -38,16 +38,8 @@ const FirstSandBoxPanel = () => {
             }),
     })
     const isActive = canDrop && isOver
-    let backgroundColor = 'lightgoldenrodyellow'
-    if (isActive) {
-        backgroundColor = 'lightgoldenrodyellow'
-    } else if (canDrop) {
-        backgroundColor = 'lightgoldenrodyellow'
-    } if(isActive && canDrop ){
-        //handleDrop(item.num)
-       // addItems(items.concat(item.num));
-        console.log(dropped);
-    }
+    let backgroundColor = 'white'
+    
 
     const handleDrop = (orderItem) =>  {
   if (!!orderItem) {
@@ -64,13 +56,13 @@ return
     return (
         <div>
         <div style={{...style, backgroundColor}}>
-            <div><Item num={"34"} /> {}<Item num={"-"} />{}<Item num={["31"]}/>{}</div>
+            <div style={{}}><Items num={"34"} panel="result"/> {}<Items panel="result" num={"-"} />{}<Items panel="result" num={["31"]}/>{}</div>
         </div>
          
 
         <div>
         <div  ref = {drop} className="ResultPanel">
-        <span className="task-header">Result Panel</span>
+        <h3 align={"center"} className="task-header">Result Panel</h3>
             <div style={{display:"none"}}>{
                 numbers.map((number) => (
                     exp = exp + number
@@ -80,11 +72,7 @@ return
             }
             </div>
             <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-            {isActive ? <Item num={item.num} />: "Drop Your Answer Here."}
+            {isActive ? <Items num={item.num} />:  <p align="center" style={{fontWeight:"bold", fontSize:"18px",marginLeft:"10px"}} >Drop your Answer here</p>}
             </div>
     </div>
 </div>

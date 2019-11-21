@@ -12,24 +12,24 @@ import AppBarCustom from "./AppBarCustom";
  * Since Nov 3,2019
  */
 
-class FirstGrade extends Component {
+class AdvancedFirst extends Component {
 	state = {
-		tasks: [
-			{ name: "1", category: "NumberPanel" },
-			{ name: "2", category: "NumberPanel" },
-			{ name: "3", category: "NumberPanel" },
-			{ name: "4", category: "NumberPanel" },
-			{ name: "5", category: "NumberPanel" },
-			{ name: "6", category: "NumberPanel" },
-			{ name: "7", category: "NumberPanel" },
-			{ name: "8", category: "NumberPanel" },
-			{ name: "9", category: "NumberPanel" },
-			{ name: "0", category: "NumberPanel" },
-			{ name: "+", category: "NumberPanel" },
-			{ name: "-", category: "NumberPanel" },
-
-		]
-	}
+        tasks: [
+            { name: "1", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "2", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "3", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "4", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "5", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "6", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "7", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "8", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "9", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "0", category: "NumberPanel", bgcolor:"#4363d8" },
+            { name: "+", category: "SymbolPanel", bgcolor:"#f58231" },
+            { name: "-", category: "SymbolPanel", bgcolor:"#f58231" },
+            
+        ]
+    }
 	onDragStart = (ev, name) => {
 		console.log('dragstart:', name);
 		ev.dataTransfer.setData("name", name);
@@ -59,7 +59,8 @@ class FirstGrade extends Component {
 		var tasks = {
 			NumberPanel: [],
 			SandBoxPanel: [],
-			ResultPanel: []
+			ResultPanel: [],
+			SymbolPanel: []
 		}
 		this.state.tasks.forEach((t) => {
 			tasks[t.category].push(
@@ -79,9 +80,9 @@ class FirstGrade extends Component {
 
 				<DndProvider backend={HTML5Backend}>
 
-					<div className="row">
+					<div className="row" style={{ backgroundColor: 'white', width: "1527px", marginTop: "-20px"}}>
 						<h1></h1>
-						<NumberPanel numberValue={tasks.NumberPanel} />
+						<NumberPanel numberValue={tasks.NumberPanel} symbolValue={tasks.SymbolPanel}/>
 
 						<FirstSandBoxPanel />
 
@@ -96,4 +97,4 @@ class FirstGrade extends Component {
 	}
 
 }
-export default FirstGrade;
+export default AdvancedFirst;

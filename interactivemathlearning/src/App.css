@@ -5,7 +5,7 @@
 }
 
 .NumberPanel {
-    background-color: lightgoldenrodyellow;
+    background-color: white;
     width: 25%;
     height :800px;
     float: left;
@@ -13,14 +13,14 @@
  }
 
 .ResultPanel {
-    background-color: lightgoldenrodyellow;
+    background-color: white;
     width: 25%;
     height :800px;
     float: left;
     border-style:ridge;
 }
 .SandBoxPanel {
-   background-color: lightgoldenrodyellow;
+   background-color: white;
    width: 48%;
    height :800px;
    float: left;

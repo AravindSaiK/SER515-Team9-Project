@@ -11,72 +11,46 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import count from "./img/count.JPG"
 import AppBarCustom from "./AppBarCustom";
+import { useHistory } from 'react-router-dom'
 
 
 /**
  * @author Nikhila Saini, Krishna Gurram ,Venkata Sairam
  * Since Nov 3,2019
  */
-  const handleChange = event => {
+  
+const style = {
+    backgroundColor: "white",
+    width: "48%",
+    height: "800px",
+    float: "left",
+    borderStyle: "ridge",
+    width: "50%"
+}
+const EasyFirst = () => {
+     const history = useHistory()
+const handleChange = event => {
    if(event.target.value == 9)
     alert("Congratulations")
     else
         alert("Sorry! You have selected a wrong answer")
+        history.goBack()
   };
-const style = {
-    backgroundColor: "lightgoldenrodyellow",
-    width: "48%",
-    height: "800px",
-    float: "left",
-    borderStyle: "ridge"
-}
-const EasyFirst = () => {
-    /*const numbers = []
-    let add = false;
-    let exp = ""
-    let sum = 0;
-    const [items, addItems] = useState([]);
-    const [{ canDrop, isOver,item,dropped }, drop] = useDrop({
-        accept: ItemTypes.BOX,
-        drop: (monitor) => ({ name: 'SandBox' }),
-        
-        collect: monitor => ({
-            isOver: monitor.isOver(),
-            canDrop: monitor.canDrop(),
-            item: monitor.getItem(),
-            //dropped: connect.dropTarget(),
-            //items:  handleDrop(item.num)
-            }),
-    })
-    const isActive = canDrop && isOver
-    let backgroundColor = 'lightgoldenrodyellow'
-    if (isActive) {
-        backgroundColor = 'lightgoldenrodyellow'
-    } else if (canDrop) {
-        backgroundColor = 'lightgoldenrodyellow'
-    } if(isActive && canDrop && dropped){
-        //handleDrop(item.num)
-       // addItems(items.concat(item.num));
-        console.log("rihan");
-    }
-
-    const handleDrop = (orderItem) =>  {
-  if (!!orderItem) {
-    //addItems(items.concat(item.num));
-  }*/
+   
   return (
-        <div>
+        <div style={{width:"100%"}}>
                             <AppBarCustom/>
 
         <div style={{...style}} >
-                <span className="task-header">Question Panel</span>
-                <p>How many Drops?</p>
+                <h3 align={"center"} className="task-header">Question Panel</h3>
+                <p style={{fontWeight:"bold", fontSize:"20px",marginLeft:"20px"}} >How many Drops are there below?</p>
 <img src={count}  />
         </div>
         <div>
-        <div  className="ResultPanel">
-        <span className="task-header">Result Panel</span>
-         <RadioGroup aria-label="result" name="count" onChange={handleChange}>
+        <div  className="ResultPanel" style={{width:"49.5%"}}>
+        <h3 align={"center"} className="task-header">Result Panel</h3>
+        <p style={{fontWeight:"bold", fontSize:"20px",marginLeft:"20px"}} >Choose the right option below:</p>
+         <RadioGroup aria-label="result" name="count" onChange={handleChange} style={{marginLeft:"20px"}}>
           <FormControlLabel value="7" control={<Radio />} label="7" />
           <FormControlLabel value="8" control={<Radio />} label="8" />
           <FormControlLabel value="9" control={<Radio />} label="9" />
@@ -88,6 +62,7 @@ const EasyFirst = () => {
         </div>
     )
 }
+
 
 
 
