@@ -1,15 +1,11 @@
-import React, {useState, useCallback, useEffect} from 'react';
+ import React, {useState, useCallback} from 'react';
 import { useDrop } from 'react-dnd'
 import ItemTypes from './ItemTypes'
-import Item from './ItemDraggable.js'
+import Item from './ItemDraggable'
 import Items from './ItemsCustom'
 import { DropTarget } from 'react-dnd'
 import Button from "@material-ui/core/Button";
-import green from '@material-ui/core/colors/green';
-import { useHistory } from 'react-router-dom'
 import update from "immutability-helper";
-
-
 
 
 /**
@@ -18,42 +14,31 @@ import update from "immutability-helper";
  */
 
 const style = {
-    backgroundColor: "white",
-    width: "35%",
+    backgroundColor: "lightgoldenrodyellow",
+    width: "48%",
     height: "800px",
     float: "left",
-    borderStyle: "ridge",
-    
+    borderStyle: "ridge"
 }
+
 
 const buttonStyle = {
-   margin: "40px 10px",
+   margin: "40px 10px"
 }
-
-const submitButtonStyle = {
-   margin: "40px 10px",
-   backgroundColor: "#2e7d32",
-   color: "#fff"
-}
-
-const FirstSandBoxPanel = (questionData) => {
-    const [questionNumber,updateQuestionNumber] = useState(0);
-    const questionsData = questionData.questionData.questions
-    const [score,updateScore] = useState(0);
-    //console.log(questionsData)
-    const[quizFinished,updateQuizFinished] = useState(false)
+const PracSandBoxPanel = (num) => {
     const numbers = []
     let add = false;
     let exp = ""
     let sum = 0;
     const [items, addItems] = useState([]);
-        const history = useHistory()
+    const initialItems = items
     const [{ canDrop, isOver,item,dropped }, drop] = useDrop({
         accept: ItemTypes.BOX,
         drop: (monitor,component) => ({ 
             item: component.getItem(),
             items: item.dragging ? items : addItems(items.concat(item)),
-            name:  'SandBoxPanel'}),        
+            name:  'PracSandBoxPanel'}),
+        
         collect: monitor => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
@@ -64,13 +49,7 @@ const FirstSandBoxPanel = (questionData) => {
     })
     const isActive = canDrop && isOver
     let backgroundColor = 'white'
-    
 
-    const handleDrop = (orderItem) =>  {
-  if (!!orderItem) {
-    //addItems(items.concat(item.num));
-  }
-}
 
 const display = (items) => {
     return (
@@ -80,9 +59,6 @@ const display = (items) => {
         )
 
 }
-
-
-
 const undo = (items) => {
     const tempItems = items
     tempItems.splice(-1,1)
@@ -110,28 +86,26 @@ const moveItem = useCallback(
         },
         [items],
     )
-const loadNext = (items,answer) => {
-    updateQuestionNumber(questionNumber+1)
-    evaluateQuestion(items,answer)
-}
-const evaluateQuestion = (items,answer) => {
-    const evaluatedAnswer = evaluate(items)
-    if( evaluatedAnswer == answer)
-        updateScore(score+1)
-    items = []
-    addItems(items.concat(items))
-    if(questionsData.length-1 == questionNumber) {
-        //alert("You have scored "+score+" Going back")
-        updateQuizFinished(true)
-    }
-}
+
 const evaluate = (items) => {
+    var lastNum = ""
     items.map((number) =>{
-                    number = number.num
+                number = number.num
                     exp = exp + number
+                    /*if(isNaN(number)){
+                        if(number == "+" || number == "-")
+                             exp = exp +"0"+number
+                         else if(number == "*" || number == "/")
+                            exp = exp +"1"+number
+                            }*/
+                            console.log(exp)
                 })
+//console.log(exp)
  try {
         sum = eval(exp)
+        if(sum < 0)
+        	return "Error"
+        //console.log()
     }catch (e){
         if(e instanceof SyntaxError )
     {   
@@ -139,52 +113,34 @@ const evaluate = (items) => {
         return " ERROR: Improperly formed formula!"
     }
     }
+    //console.log(sum)
     return sum
 
 }
-useEffect(() => {
-    if(quizFinished) {
-      alert("You have scored " + score+". Going Back")
-    history.goBack()
-    }
-  });
-
-
+ 
+//console.log(item)
     return (
-        <div >
         <div>
-        <div style={{...style, backgroundColor}}>
-            <div>
-                <h3 align={"center"} className="task-header">Question Panel</h3>
-                <p style={{fontWeight:"bold", fontSize:"20px",marginLeft:"20px"}} >{questionsData.length-1 < questionNumber ? " " : questionsData[questionNumber].question}</p>
-            </div>
-        </div>
-         
-
-        <div>
-        <div  ref = {drop} className="ResultPanel" style={{width:"38%"}}>
-        <h3 align={"center"} className="task-header">Result Panel</h3>
-           
-            <div style={{height:"50px"}}>
+            <div ref={drop} style={{...style, backgroundColor}}>
 {isActive ? items.length >= 1 ? display(items):<Item num={item.num} id={item.index} index ={0} dragging="true" moveItem={moveItem}/>: items.length > 0 ? display(items):<h3 align={"center"}>Drop Here</h3>  }
-            </div>
-                 <div style={{marginTop:"400px", marginLeft:"180px"}}>
+                <div style={{marginTop:"500px", marginLeft:"280px"}}>
                 <Button style= {buttonStyle} variant="contained" color="primary" onClick={param => undo(items)}> Delete </Button>
                 <Button style= {buttonStyle} variant="contained" color="secondary" onClick={param => clear(items)}> Clear </Button>
-                <Button  style= {submitButtonStyle} variant="contained" color="#2e7d32" onClick={param => loadNext(items,questionsData[questionNumber].answer) }> {questionsData.length-1 == questionNumber ? "Submit" : "Next"} </Button>
-                 <p style={{fontWeight:"bold", fontSize:"20px",marginLeft:"45px",marginTop:"-10px"}} >Your Current Score: {score}</p>
                 </div>
-               
 
-             
-    </div>
-</div>
-</div>
+            </div>
 
-
+            <div>
+                <div  className="ResultPanel">
+                <div>
+                    <h3 align={"center"} className="task-header" >Result Panel</h3>
+                </div>
+                    {items.length > 0 ? <Items num={evaluate(items)} panel={"result"}/> : ""}
+                </div>
+            </div>
         </div>
-    )
+)
 }
 
 
-export default (FirstSandBoxPanel);
+export default PracSandBoxPanel;
