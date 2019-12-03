@@ -11,87 +11,62 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import count from "./img/count.JPG"
 import AppBarCustom from "./AppBarCustom";
+import { useHistory } from 'react-router-dom'
 
 
 /**
  * @author Nikhila Saini, Krishna Gurram ,Venkata Sairam
  * Since Nov 3,2019
  */
-  const handleChange = event => {
-   if(event.target.value == 36)
-    alert("Congratulations")
-    else
-        alert("Sorry! You have selected a wrong answer")
-  };
+
 const style = {
-    backgroundColor: "lightgoldenrodyellow",
-    width: "48%",
+    backgroundColor: "white",
     height: "800px",
     float: "left",
-    borderStyle: "ridge"
+    borderStyle: "ridge",
+    width:"50%"
 }
 const EasyThird = () => {
-    /*const numbers = []
-    let add = false;
-    let exp = ""
-    let sum = 0;
-    const [items, addItems] = useState([]);
-    const [{ canDrop, isOver,item,dropped }, drop] = useDrop({
-        accept: ItemTypes.BOX,
-        drop: (monitor) => ({ name: 'SandBox' }),
-        
-        collect: monitor => ({
-            isOver: monitor.isOver(),
-            canDrop: monitor.canDrop(),
-            item: monitor.getItem(),
-            //dropped: connect.dropTarget(),
-            //items:  handleDrop(item.num)
-            }),
-    })
-    const isActive = canDrop && isOver
-    let backgroundColor = 'lightgoldenrodyellow'
-    if (isActive) {
-        backgroundColor = 'lightgoldenrodyellow'
-    } else if (canDrop) {
-        backgroundColor = 'lightgoldenrodyellow'
-    } if(isActive && canDrop && dropped){
-        //handleDrop(item.num)
-       // addItems(items.concat(item.num));
-        console.log("rihan");
-    }
 
-    const handleDrop = (orderItem) =>  {
-  if (!!orderItem) {
-    //addItems(items.concat(item.num));
-  }*/
-  return (
-        <div>
-                            <AppBarCustom/>
+    const history = useHistory()
+    const handleChange = event => {
+        if(event.target.value == 36)
+            alert("Congratulations. You have passed the quiz. Going Back")
+        else
+            alert("Sorry! You have selected a wrong answer. Going Back")
+        history.goBack()
+    };
 
-        <div style={{...style}} >
-                <span className="task-header">Question Panel</span>
-                <p>Solve the below Equation </p>
-                <div><Items num={"12"} /> {}<Items num={"*"} />{}<Items num={["3"]}/>{}</div>
-        </div>
-        <div>
-        <div  className="ResultPanel">
-        <span className="task-header">Result Panel</span>
-         <RadioGroup aria-label="result" name="count" onChange={handleChange}>
-          <FormControlLabel value="34" control={<Radio />} label="34" />
-          <FormControlLabel value="35" control={<Radio />} label="35" />
-          <FormControlLabel value="36" control={<Radio />} label="36" />
-          <FormControlLabel value="37" control={<Radio />} label="37" />
-        </RadioGroup>
+    return (
+        <div style={{width:"100%"}}>
+            <AppBarCustom/>
 
-        </div>
-        </div>
+            <div style={{...style}} >
+
+                <h3 align={"center"} className="task-header">Question Panel</h3>
+                <p style={{fontWeight:"bold", fontSize:"20px",marginLeft:"20px"}} >Solve the below Equation</p>
+                <div style={{marginTop:"-200px"}}><Items panel="result" num={"12"} /> {}<Items panel="result"  num={"*"} />{}<Items panel="result"  num={["3"]}/>{}</div>
+            </div>
+            <div>
+                <div  className="ResultPanel" style={{width:"49.5%"}}>
+                    <h3 align={"center"} className="task-header">Result Panel</h3>
+                    <p style={{fontWeight:"bold", fontSize:"20px",marginLeft:"20px"}} >Choose the right option below:</p>
+                    <RadioGroup aria-label="result" name="count" onChange={handleChange} style={{marginLeft:"20px"}}>
+                        <FormControlLabel value="34" control={<Radio />} label="34" />
+                        <FormControlLabel value="35" control={<Radio />} label="35" />
+                        <FormControlLabel value="36" control={<Radio />} label="36" />
+                        <FormControlLabel value="37" control={<Radio />} label="37" />
+                    </RadioGroup>
+
+                </div>
+            </div>
         </div>
     )
 }
 
 
 
-    
+
 
 
 
