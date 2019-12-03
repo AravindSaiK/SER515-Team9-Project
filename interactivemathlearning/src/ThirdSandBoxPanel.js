@@ -2,10 +2,7 @@ import React, {useState, useCallback, useEffect} from 'react';
 import { useDrop } from 'react-dnd'
 import ItemTypes from './ItemTypes'
 import Item from './ItemDraggable.js'
-import Items from './ItemsCustom'
-import { DropTarget } from 'react-dnd'
 import Button from "@material-ui/core/Button";
-import green from '@material-ui/core/colors/green';
 import { useHistory } from 'react-router-dom'
 import update from "immutability-helper";
 

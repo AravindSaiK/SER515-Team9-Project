@@ -79,7 +79,7 @@ data.forEach((quizData, i) => {
 
          {
 
-            rows.length == 0 ? <TableRow><TableCell style={{border:"1px #000 solid"}} align="center" colSpan="4"><h3>No Quiz exists in DB</h3></TableCell></TableRow> : 
+            rows.length === 0 ? <TableRow><TableCell style={{border:"1px #000 solid"}} align="center" colSpan="4"><h3>No Quiz exists in DB</h3></TableCell></TableRow> : 
             rows.map(row => (
             <TableRow  key={row.quizName}>
               <TableCell style={{border:"1px #000 solid"}} component="th" scope="row">
