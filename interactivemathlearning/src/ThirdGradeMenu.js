@@ -26,14 +26,15 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function ThirdGradeMenu() {
+export default function ThirdGradeMenu(grade) {
     const classes = useStyles();
+    var gradeLevel = grade.location.state
 
     return (
        <div >
-           <AppBarCustom gradeLevel={gradeLevel}/>
+        <AppBarCustom gradeLevel={gradeLevel}/>
 <div align="center" style={{marginTop: "275px"}}>
-            <Button  variant="contained" color = "default" className={classes.buttonClass} ><Link to="/PracticeThirdGrade">Practice Quiz</Link></Button>
+            <Button  variant="contained" color = "default" className={classes.buttonClass} ><Link to="/PracticeThirdGrade">Playground</Link></Button>
             <Button variant="contained" color = "default"  className={classes.buttonClass} ><Link to="/TakeQuizThirdGrade" >Take Quiz</Link></Button>
 </div>
         </div>
