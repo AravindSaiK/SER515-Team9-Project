@@ -79,3 +79,30 @@ if(req.body.username == "admin" && req.body.password == "admin") {
  res.status(500).json({"message": "Username or password doesn't exist"})
  });
 
+app.get('/viewStudent', function(req, res) {
+    let rawdata = fs.readFileSync('users.json');
+    let student = JSON.parse(rawdata);
+    res.writeHead(200, {
+        'Content-Type': 'application/json',
+    });
+    res.end(JSON.stringify(student));
+});
+
+app.delete('/deleteStudent', function(req,res){
+    let rawdata = fs.readFileSync('users.json');
+    let student = JSON.parse(rawdata);
+    /*console.log(req.body.id)
+    */
+    for(var i=0; i<student.length;i++) {
+        if(student[i].user.username == req.body.id){
+            student.splice(i,1)
+        }
+
+    }
+    fs.writeFileSync('users.json', JSON.stringify(student),{encoding:'utf8',flag:'w'});
+    rawdata = fs.readFileSync('users.json');
+    student = JSON.parse(rawdata);
+    res.status(200).json({"data": student})
+
+})
+
