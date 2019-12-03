@@ -9,18 +9,37 @@ import Items from "./Items";
 class NumberPanel extends Component {
 
 
+    
+
+
     render() {
         return (
             <div>
 
         <div className="NumberPanel" >
-            <span className="task-header" >Number Panel</span>
-            <div style ={{marginLeft:"5px"}}>
+            <h4 align="center" className="task-header" >Number Panel</h4>
+            <div  style ={{marginLeft:"70px", width:"250px"}} >
             {
                 this.props.numberValue.map((number,i) => (
-                    <Items style={{marginTop:"500px"}}key={i} num = {number.key} />
-                ))
+number.key == 0 ? <div style={{margin: "0px 75px"}}><Items id={number.props.id} index={i} color = {number.props.style.backgroundColor} num = {number.key} /></div> : <Items id={number.props.id} index={i}  color = {number.props.style.backgroundColor} num = {number.key} />                ))
             }
+
+
+            </div>
+
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            {this.props.symbolValue!= null ? <h4 align="center" className="task-header" >Symbol Panel</h4> : ""}
+            <div style ={{marginLeft:"70px", width:"250px"}} >
+            
+            {
+                this.props.symbolValue!= null ?
+                this.props.symbolValue.map((symbol,i) => (
+symbol.key == 0 ? <div style={{margin: "0px 75px"}}><Items id={symbol.props.id} index={i} color = {symbol.props.style.backgroundColor} num = {symbol.key} /></div> : <Items id={i} index={symbol.props.id}  color = {symbol.props.style.backgroundColor} num = {symbol.key} />                ))
+                : " "
+            }
+
+
+
             </div>
         </div>
     </div>

@@ -1,12 +1,11 @@
-import React, {useState, useCallback } from 'react';
+ import React, {useState, useCallback} from 'react';
 import { useDrop } from 'react-dnd'
 import ItemTypes from './ItemTypes'
-import Item from './ItemDraggable.js'
+import Item from './ItemDraggable'
 import Items from './ItemsCustom'
+import { DropTarget } from 'react-dnd'
 import Button from "@material-ui/core/Button";
 import update from "immutability-helper";
-
-
 
 
 /**
@@ -19,14 +18,14 @@ const style = {
     width: "48%",
     height: "800px",
     float: "left",
-    borderStyle: "ridge" 
+    borderStyle: "ridge"
 }
 
 
 const buttonStyle = {
    margin: "40px 10px"
 }
-const SandBoxPanel = (num) => {
+const PracSandBoxPanel = (num) => {
     const numbers = []
     let add = false;
     let exp = ""
@@ -38,7 +37,7 @@ const SandBoxPanel = (num) => {
         drop: (monitor,component) => ({ 
             item: component.getItem(),
             items: item.dragging ? items : addItems(items.concat(item)),
-            name:  'SandBoxPanel'}),
+            name:  'PracSandBoxPanel'}),
         
         collect: monitor => ({
             isOver: monitor.isOver(),
@@ -71,7 +70,6 @@ const clear = (items) => {
     addItems(items.concat(items))
 }
 
-
 const moveItem = useCallback(
         (dragIndex, hoverIndex) => {
 
@@ -89,26 +87,24 @@ const moveItem = useCallback(
         [items],
     )
 
-
-
 const evaluate = (items) => {
     var lastNum = ""
     items.map((number) =>{
-                    number = number.num
+                number = number.num
                     exp = exp + number
-                    if(isNaN(number)){
-                        if(number === "+" || number === "-")
+                    /*if(isNaN(number)){
+                        if(number == "+" || number == "-")
                              exp = exp +"0"+number
-                         else if(number === "*" || number === "/")
+                         else if(number == "*" || number == "/")
                             exp = exp +"1"+number
-
-                         
-                            }
-                            //console.log(exp)
+                            }*/
+                            console.log(exp)
                 })
 //console.log(exp)
  try {
         sum = eval(exp)
+        if(sum < 0)
+        	return "Error"
         //console.log()
     }catch (e){
         if(e instanceof SyntaxError )
@@ -127,7 +123,6 @@ const evaluate = (items) => {
         <div>
             <div ref={drop} style={{...style, backgroundColor}}>
 {isActive ? items.length >= 1 ? display(items):<Item num={item.num} id={item.index} index ={0} dragging="true" moveItem={moveItem}/>: items.length > 0 ? display(items):<h3 align={"center"}>Drop Here</h3>  }
-
                 <div style={{marginTop:"500px", marginLeft:"280px"}}>
                 <Button style= {buttonStyle} variant="contained" color="primary" onClick={param => undo(items)}> Delete </Button>
                 <Button style= {buttonStyle} variant="contained" color="secondary" onClick={param => clear(items)}> Clear </Button>
@@ -148,4 +143,4 @@ const evaluate = (items) => {
 }
 
 
-export default SandBoxPanel;
+export default PracSandBoxPanel;

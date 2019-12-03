@@ -9,12 +9,30 @@ import TakeQuizFirstGrade from "./TakeQuizFirstGrade";
 import ThirdGradeMenu from "./ThirdGradeMenu";
 import TakeQuizThirdGrade from "./TakeQuizThirdGrade";
 import QuestionsEasy from "./QuestionsEasy";
+import EasyFirst from "./EasyFirst.js";
+import EasyThird from "./EasyThird.js";
+import MediumFirst from "./MediumFirst.js";
+import AdvancedFirst from "./AdvancedFirst.js";
+import AdvancedThird from "./AdvancedThird.js";
+import MediumThird from "./MediumThird.js";
+import AppBar from "./AppBarCustom.js"
+import Register from "./Register.js"
+import AdminMenu from "./AdminMenu.js"
+import ViewStudent from "./ViewStudent.js"
+import AddQuiz from "./AddQuiz.js"
+import ViewQuizzes from "./ViewQuizzes.js"
+import AddQuestions from "./AddQuestions.js"
 /**
  * @author Nikhila Saini ,Venkata Sairam, Tharun Chintham, Aravinda Sai
  * Since Nov 3,2019
  */
 
 class Main extends Component {
+
+    constructor(props){
+        super(props);
+    }
+
     render() {
         return (
             <BrowserRouter>
@@ -31,17 +49,25 @@ class Main extends Component {
                         <Route exact path="/ThirdGrade" component={ThirdGrade} />
                         <Route exact path='/PracticeFirstGrade' component={FirstGrade} />
                         <Route exact path='/PracticeThirdGrade' component={ThirdGrade} />
-                        <Route exact path='/EasyFirst' component={QuestionsEasy} />
-                        <Route exact path='/MediumFirst' component={QuestionsEasy} />
-                        <Route exact path='/AdvancedFirst' component={QuestionsEasy} />
-                        <Route exact path='/EasyThird' component={QuestionsEasy} />
-                        <Route exact path='/MediumThird' component={QuestionsEasy} />
-                        <Route exact path='/AdvancedThird' component={QuestionsEasy} />
+                        <Route exact path='/EasyFirst' component={EasyFirst} />
+                        <Route exact path='/MediumFirst' component={MediumFirst} />
+                        <Route exact path='/AdvancedFirst' component={AdvancedFirst} />
+                        <Route exact path='/EasyThird' component={EasyThird} />
+                        <Route exact path='/MediumThird' component={MediumThird} />
+                        <Route exact path='/AdvancedThird' component={AdvancedThird} />
+                        <Route exact path='/register' component={Register} />
+                        <Route exact path='/AdminMenu' component={AdminMenu} />
+                        <Route exact path='/ViewStudent' component={ViewStudent} />
+                        <Route exact path='/AddQuiz' component={AddQuiz} />
+                        <Route exact path='/ViewQuizzes' component={ViewQuizzes} />
+                        <Route exact path='/AddQuestions' component={AddQuestions} />
+
                     </Switch>
                 </div>
             </BrowserRouter>
         );
     }
+
 }
 
 // function Home() {

@@ -26,17 +26,24 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function FirstGradeMenu(grade) {
+export default function AdminMenu(grade) {
     const classes = useStyles();
     var gradeLevel = grade.location.state
     return (
       <div >
         <AppBarCustom gradeLevel={gradeLevel}/>
             <div align="center" style={{marginTop: "275px"}}>
+
+             <Button variant="contained" color="default" className={classes.buttonClass}><Link
+                    to="/Register">Add Student</Link></Button>
+                    <Button variant="contained" color="default" className={classes.buttonClass}><Link
+                    to="/AddQuiz">Add Quiz</Link></Button>
+
+
                 <Button variant="contained" color="default" className={classes.buttonClass}><Link
-                    to="/PracticeFirstGrade">Playground</Link></Button>
+                    to="/ViewStudent">View Students</Link></Button>
                 <Button variant="contained" color="default" className={classes.buttonClass}><Link
-                    to="/TakeQuizFirstGrade">Take Quiz</Link></Button>
+                    to="/ViewQuizzes">View Quizzes</Link></Button>
             </div>
         </div>
     );
