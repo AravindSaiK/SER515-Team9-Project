@@ -7,6 +7,7 @@ import SandBoxPanel from "./SandBoxPanel";
 import ResultPanel from "./ResultPanel";
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
+import AppBarCustom from "./AppBarCustom";
 
 /**
  * @author Tharun Chintham
@@ -16,19 +17,23 @@ import HTML5Backend from 'react-dnd-html5-backend'
 class ThirdGrade extends Component {
 	state = {
 		tasks: [
-			{ name: "1", category: "NumberPanel" },
-			{ name: "2", category: "NumberPanel" },
-			{ name: "3", category: "NumberPanel" },
-			{ name: "4", category: "NumberPanel" },
-			{ name: "5", category: "NumberPanel" },
-			{ name: "6", category: "NumberPanel" },
-			{ name: "7", category: "NumberPanel" },
-			{ name: "8", category: "NumberPanel" },
-			{ name: "9", category: "NumberPanel" },
-			{ name: "0", category: "NumberPanel" },
-			{ name: "+", category: "NumberPanel" },
-			{ name: "-", category: "NumberPanel" },
-			{ name: "*", category: "NumberPanel" }
+			{ id: 1, name: "1", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 2, name: "2", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 3, name: "3", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 4, name: "4", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 5, name: "5", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 6, name: "6", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 7, name: "7", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 8, name: "8", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 9, name: "9", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 10, name: "0", category: "NumberPanel", bgcolor:"#4363d8" },
+			{ id: 11, name: "+", category: "SymbolPanel", bgcolor:"#f58231" },
+			{ id: 12, name: "-", category: "SymbolPanel", bgcolor:"#f58231" },
+			{ id: 13, name: "*", category: "SymbolPanel", bgcolor:"#f58231" },
+			{ id: 14, name: "/", category: "SymbolPanel", bgcolor:"#f58231" },
+			{ id: 15, name: "(", category: "SymbolPanel", bgcolor:"#3cb44b" },
+			{ id: 16, name: ")", category: "SymbolPanel", bgcolor:"#3cb44b" },
+
 
 		]
 	}
@@ -61,15 +66,17 @@ class ThirdGrade extends Component {
 		var tasks = {
 			NumberPanel: [],
 			SandBoxPanel: [],
-			ResultPanel: []
+			ResultPanel: [],
+			SymbolPanel: []
 		}
 		this.state.tasks.forEach((t) => {
 			tasks[t.category].push(
 				<div key={t.name}
-					onDragStart={(e) => this.onDragStart(e, t.name)}
-					draggable
-					className="draggable"
-					style={{ backgroundColor: t.bgcolor, width: "25px", textAlign: "center", padding: "10px", margin: "5px", borderRadius: "6px" }}
+					 id= {t.id}
+					 onDragStart={(e) => this.onDragStart(e, t.name)}
+					 draggable
+					 className="draggable"
+					 style={{ backgroundColor: t.bgcolor, width: "25px", textAlign: "center", padding: "10px", margin: "5px", borderRadius: "6px" }}
 				>
 					{t.name}
 				</div>
@@ -77,15 +84,15 @@ class ThirdGrade extends Component {
 		});
 		return (
 			<div>
+				<AppBarCustom/>
+
 				<DndProvider backend={HTML5Backend}>
 
-					<div className="row">
-						<h1>Interactive Math Learning</h1>
-						<NumberPanel numberValue={tasks.NumberPanel} />
+					<div className="row" style={{ backgroundColor: 'white', width: "1527px"}}>
+						<NumberPanel numberValue={tasks.NumberPanel} symbolValue={tasks.SymbolPanel}/>
 
 						<SandBoxPanel sandboxValue={tasks.SandBoxPanel} />
 
-						<ResultPanel />
 
 
 					</div>

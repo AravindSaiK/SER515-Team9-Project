@@ -31,7 +31,7 @@ export default function ThirdGradeMenu() {
 
     return (
        <div >
-        <AppBarCustom/>
+           <AppBarCustom gradeLevel={gradeLevel}/>
 <div align="center" style={{marginTop: "275px"}}>
             <Button  variant="contained" color = "default" className={classes.buttonClass} ><Link to="/PracticeThirdGrade">Practice Quiz</Link></Button>
             <Button variant="contained" color = "default"  className={classes.buttonClass} ><Link to="/TakeQuizThirdGrade" >Take Quiz</Link></Button>
