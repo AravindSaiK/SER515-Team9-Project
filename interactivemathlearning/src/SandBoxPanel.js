@@ -3,7 +3,6 @@ import { useDrop } from 'react-dnd'
 import ItemTypes from './ItemTypes'
 import Item from './ItemDraggable.js'
 import Items from './ItemsCustom'
-import { DropTarget } from 'react-dnd'
 import Button from "@material-ui/core/Button";
 import update from "immutability-helper";
 
@@ -98,9 +97,9 @@ const evaluate = (items) => {
                     number = number.num
                     exp = exp + number
                     if(isNaN(number)){
-                        if(number == "+" || number == "-")
+                        if(number === "+" || number === "-")
                              exp = exp +"0"+number
-                         else if(number == "*" || number == "/")
+                         else if(number === "*" || number === "/")
                             exp = exp +"1"+number
 
                          

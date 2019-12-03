@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import "./App.css"
 import NumberPanel from "./NumberPanel";
 import SandBoxPanel from "./SandBoxPanel";
-import ResultPanel from "./ResultPanel";
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import AppBarCustom from "./AppBarCustom";

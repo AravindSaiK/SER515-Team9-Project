@@ -1,10 +1,7 @@
 import React from 'react';
 import { useDrag } from 'react-dnd'
 import ItemTypes from './ItemTypes'
-//import { browserHistory } from 'react-router';
 import { useHistory } from 'react-router-dom'
-import { red } from '@material-ui/core/colors';
-import SandBoxPanel from './SandBoxPanel.js'
 
 
 /**

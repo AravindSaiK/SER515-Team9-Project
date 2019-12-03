@@ -3,8 +3,6 @@ import { useDrag, useDrop } from 'react-dnd'
 import ItemTypes from './ItemTypes'
 //import { browserHistory } from 'react-router';
 import { useHistory } from 'react-router-dom'
-import { red } from '@material-ui/core/colors';
-import SandBoxPanel from './SandBoxPanel.js'
 
 
 /**
@@ -14,7 +12,7 @@ import SandBoxPanel from './SandBoxPanel.js'
 
 
 const ItemDraggable = ({  id, num, index, moveItem,dragging }) => {
-    const color = isNaN(num) ? num == "(" || num == ")" ? "#3cb44b" :"#f58231": "#4363d8"
+    const color = isNaN(num) ? num === "(" || num === ")" ? "#3cb44b" :"#f58231": "#4363d8"
     const ref = useRef(null)
     const [items, addItems] = React.useState([]);
 
@@ -79,15 +77,15 @@ const ItemDraggable = ({  id, num, index, moveItem,dragging }) => {
             const dropResult = monitor.getDropResult()
 
             if (item && dropResult) {
-                if(dropResult.name == "AdvancedFirst"){
-                    if(item.num == 3)
+                if(dropResult.name === "AdvancedFirst"){
+                    if(item.num === 3)
                         alert("You dropped the Correct Answer!")
                     else
                         alert("Sorry you dropped the wrong Answer!")
                     redirect()
                 }
-                if(dropResult.name == "AdvancedThird"){
-                    if(item.num == "/")
+                if(dropResult.name === "AdvancedThird"){
+                    if(item.num === "/")
                         alert("You dropped the Correct Answer!")
                     else
                         alert("Sorry you dropped the wrong Answer!")
