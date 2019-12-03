@@ -2,6 +2,8 @@
 
 Install Yarn and npm on your system. Once it is done go to the interactivemathlearning folder in the project.
 
+Navigate to interactive-math-learning.
+
 ## Run the following command to install all the dependencies
 ```
 yarn install
